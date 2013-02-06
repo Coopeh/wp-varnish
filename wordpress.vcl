@@ -12,6 +12,16 @@ sub vcl_recv {
     if(!client.ip ~ purge) {
       error 405 "Not allowed.";
     }
+    error 200 "Purged";
+    return(lookup);
+  }
+
+  if (req.request == "BAN") {
+    if (!client.ip ~ purge) {
+        error 405 "Not allowed.";
+    }
+    ban("req.url ~ "+req.url+" && req.http.host == "+req.http.host);
+    error 200 "Banned.";
     return(lookup);
   }
 
