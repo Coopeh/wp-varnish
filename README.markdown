@@ -1,7 +1,7 @@
 WordPress Varnish
 =================
 
-* Contributors: pkhamre, wfelipe, eitch, linickx
+* Contributors: pkhamre, wfelipe, eitch, linickx, Coopeh
 * Donate link: http://github.com/pkhamre/wp-varnish
 * Tags: cache, caching, performance, varnish, purge, speed
 * Requires at least: 2.9.2
@@ -18,6 +18,8 @@ added, a post is updated or when a comment is posted to your blog.
 
 To keep widgets like "Recent posts", "Recent comments" and such up to date, you should consider using ESI
 and include them through a text widget for arbitrary text or HTML.
+
+This fork removes the admin port code and uses HTTP BAN requests instead, code is needed in default.vcl for this to work.
 
 Installation
 ------------
@@ -77,6 +79,15 @@ Screenshots
 
 Changelog
 ---------
+
+### 0.4.1
+* Forked
+* Removes Admin Port code as isn't required
+* HTTP BAN request used in place of PURGE
+* wordpress.vcl updated with new code for BAN requests
+* Fixed nav menu saving slow down
+* Nav menu now clears all website cache
+* Cache clear on new theme
 
 ### 0.4
 
